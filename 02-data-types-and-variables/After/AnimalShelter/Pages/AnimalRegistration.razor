@@ -6,17 +6,37 @@
 
 <button class="btn btn-primary" @onclick="AddAnimal">Add animal</button>
 <button class="btn btn-primary" @onclick="RemoveAnimal">Remove animal</button>
+<p></p>
+
+<p>@infoMessage</p>
 
 @code {
     private int animalCount = 0;
+    private string infoMessage = string.Empty;
+    private int maxAnimalCapacity = 20;
 
     private void AddAnimal()
     {
-        animalCount++;
+        infoMessage = string.Empty;
+        if (animalCount < maxAnimalCapacity)
+        {   animalCount++;
+        infoMessage = "You added one animal";
+         }
+        else
+        infoMessage = "Max capacity reached";
+
     }
 
     private void RemoveAnimal()
     {
-        animalCount--;
+        infoMessage = string.Empty;
+        if (animalCount > 0)
+            {
+                animalCount--;
+                infoMessage = "You removed one animal";
+            }
+            else
+            infoMessage ="Nothing to remove";
+
     }
 }
