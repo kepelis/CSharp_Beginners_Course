@@ -2,7 +2,7 @@
 
 <h1>Animal registration</h1>
 
-<p>At @DateTime.Today.ToShortDateString() we have @animalCount animals.</p>
+<p>At @DateTime.Today.ToShortDateString() we have @animalCountMessage animals.</p>
 
 <button class="btn btn-primary" @onclick="AddAnimal">Add animal</button>
 <button class="btn btn-primary" @onclick="RemoveAnimal">Remove animal</button>
@@ -12,22 +12,31 @@
 
 @code {
     private int animalCount = 0;
+    private string animalCountMessage = "no";
+    //At 2020-02-09 we have no animals
+
     private string infoMessage = string.Empty;
     private int maxAnimalCapacity = 20;
 
     private void AddAnimal()
+    //If there are 20 animals your page should look like this:
+    //At 2020-02-09 we have 20 (full capacity) animals
     {
         infoMessage = string.Empty;
         if (animalCount < maxAnimalCapacity)
-        {   animalCount++;
-        infoMessage = "You added one animal";
+        {
+            animalCount++;
+            //animalCountMessage = animalCount.ToString();
+            infoMessage = "You added one animal";
          }
         else
-        infoMessage = "Max capacity reached";
+            infoMessage = "Max capacity reached";
 
     }
 
     private void RemoveAnimal()
+    //Otherwise it should stay the same as it was before:
+    // At 2020-02-09 we have 5 animals`
     {
         infoMessage = string.Empty;
         if (animalCount > 0)
