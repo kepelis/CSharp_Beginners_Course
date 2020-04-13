@@ -12,14 +12,6 @@ namespace AnimalShelter.Data
         {
             _calendarService = calendarService;
         }
-       /* public Boolean Contains(string name)
-        {
-            if (true) //contains
-            return true;
-            else 
-            return false;
-        }
-        */
 
         public string GetAnimalCountText()
     {
