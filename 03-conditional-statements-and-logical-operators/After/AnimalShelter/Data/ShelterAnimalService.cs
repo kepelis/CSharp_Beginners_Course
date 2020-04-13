@@ -8,6 +8,7 @@ namespace AnimalShelter.Data
         public readonly int AnimalCapacity = 20;
         private readonly ShelterCalendarService _calendarService;
         private List<string> _animals = new List<string>();
+        //public List<string> _animals = new List<string>();
         public ShelterAnimalService(ShelterCalendarService calendarService)
         {
             _calendarService = calendarService;

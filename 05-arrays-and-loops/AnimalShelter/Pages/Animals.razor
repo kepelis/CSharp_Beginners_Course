@@ -1,4 +1,4 @@
-@page "/animals"
+﻿@page "/animals"
 
 @using AnimalShelter.Data
 @inject ShelterAnimalService AnimalService
@@ -30,14 +30,11 @@ else
     </table>
 }
 
-
-
-
 @code {
     private string[] animals;
 
-    protected override async Task OnInitializedAsync() 
+    protected override async Task OnInitializedAsync()
     {
-        //animals =  AnimalService._animals;//Animals;
+        animals = AnimalService.Animals;
     }
 }
