@@ -53,7 +53,25 @@
     
     private void AddAnimal()
     {
-          AnimalService.AddAnimal(_currentAnimal);
+         Animal animalToCreate = null;
+         switch(_selectedAnimalType)
+         {
+             case "Dog":
+             animalToCreate = new Dog();
+             break;
+             case "Cat":
+             animalToCreate = new Cat();
+             break;
+         }
+         if (animalToCreate == null )
+            return;
+
+          animalToCreate.Age = _currentAnimal.Age;
+          animalToCreate.Name = _currentAnimal.Name;
+          animalToCreate.Weight = _currentAnimal.Weight;
+
+          AnimalService.AddAnimal(animalToCreate);
           _currentAnimal = new Animal();
+          _selectedAnimalType = string.Empty;
     }
 }

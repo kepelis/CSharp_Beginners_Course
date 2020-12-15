@@ -20,6 +20,7 @@ else
                 <th>Age</th>
                 <th>Weight</th>
                 <th>Registration Date</th>
+                <th>Animal Type</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@ else
                     <td>@animal.Age</td>
                     <td>@animal.Weight</td>
                     <td>@animal.DateRegistered</td>
+                    <td>@AnimalToType(animal)</td>
                 </tr>
             }
         </tbody>
@@ -38,6 +40,15 @@ else
 
 @code {
     private Animal[] animals;
+    private string AnimalToType(Animal animal)
+    {
+        if (animal is Dog)
+            return "Dog";
+        else if (animal is Cat)
+            return "Cat";
+        
+            return "Unknown";
+    }
 
     protected override async Task OnInitializedAsync()
     {
