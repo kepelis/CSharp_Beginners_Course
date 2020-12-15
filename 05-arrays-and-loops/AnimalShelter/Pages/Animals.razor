@@ -17,13 +17,19 @@ else
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Age</th>
+                <th>Weight</th>
+                <th>Registration Date</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var animal in animals)
             {
                 <tr>
-                    <td>@animal</td>
+                    <td>@animal.Name</td>
+                    <td>@animal.Age</td>
+                    <td>@animal.Weight</td>
+                    <td>@animal.DateRegistered</td>
                 </tr>
             }
         </tbody>
@@ -31,11 +37,10 @@ else
 }
 
 @code {
-    private string[] animals;
+    private Animal[] animals;
 
     protected override async Task OnInitializedAsync()
     {
         animals = AnimalService.Animals;
-        //testas
     }
 }

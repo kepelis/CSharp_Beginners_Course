@@ -10,12 +10,27 @@
 
 <h2>Animal Information</h2>
 
-Name: <input type="text" @bind="_animalName"/><br/><br/>
+<p>
+    <select class="form-control" @bind="_selectedAnimalType" >
+        <option selected disabled value="">Choose animal type</option>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+    </select>
+</p>
 
-<button class="btn btn-primary" @onclick="AddAnimal">Add animal</button>
+<EditForm Model="@_currentAnimal">
+    <p>Name:<br/><InputText id="name" @bind-Value="_currentAnimal.Name" /></p>
+    <p>Age:<br/><InputNumber id="age" @bind-Value="_currentAnimal.Age" /></p>
+    <p>Weight:<br/><InputNumber id="weight" @bind-Value="_currentAnimal.Weight" /></p>
+
+    <button class="btn btn-primary" @onclick="AddAnimal">Add animal</button>
+</EditForm>
 
 @code {
     private string _animalName;
+    private Animal _currentAnimal = new Animal();
+
+    private string _selectedAnimalType = string.Empty;
 
     private string GetAnimalCountText()
     {
@@ -35,8 +50,10 @@ Name: <input type="text" @bind="_animalName"/><br/><br/>
         }
     }
 
+    
     private void AddAnimal()
     {
-        AnimalService.AddAnimal(_animalName);
+          AnimalService.AddAnimal(_currentAnimal);
+          _currentAnimal = new Animal();
     }
 }
